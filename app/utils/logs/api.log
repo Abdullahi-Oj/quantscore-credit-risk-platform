@@ -1,0 +1,4 @@
+2025-12-25 04:14:44,921 | ERROR | /predict ERROR | "['debt_to_income'] not in index"
+2025-12-25 04:27:47,937 | INFO | /predict | prob=0.99 | risk=High Risk
+2025-12-25 04:32:44,027 | INFO | /predict | prob=0.99 | risk=High Risk
+2025-12-25 04:38:43,063 | INFO | /predict | prob=0.99 | risk=High Risk
