@@ -1,3 +1,4 @@
+
 # QuantScore — Credit Risk Intelligence Platform
 
 QuantScore is an end-to-end AI-powered credit risk platform designed for digital lenders and fintechs operating in emerging markets, with a strong focus on Africa.
