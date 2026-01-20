@@ -1,4 +1,5 @@
 
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[codz]
@@ -206,3 +207,25 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
+=======
+.venv?
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual environments
+.venv/
+venv/
+
+# Logs
+*.log
+app/logs/
+
+# Data outputs
+*.csv
+
+# OS
+.DS_Store
+Thumbs.db

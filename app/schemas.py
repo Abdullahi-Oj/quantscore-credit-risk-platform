@@ -1,5 +1,7 @@
-from pydantic import BaseModel, Field, validator
-from typing import List
+# app/schemas.py
+
+from pydantic import BaseModel, Field, validator, ConfigDict
+from typing import List, Optional
 
 # ==========================
 # 🔹 API Input Schema
@@ -26,8 +28,8 @@ class CreditData(BaseModel):
             raise ValueError("Field must be 0 or 1")
         return v
 
-    class Config:
-        schema_extra = {
+    model_config = ConfigDict(
+        json_schema_extra={
             "example": {
                 "Age": 30,
                 "MonthlyIncome": 250000,
@@ -45,37 +47,13 @@ class CreditData(BaseModel):
                 "RepaymentRatio": 0.8
             }
         }
+    )
 
 # ==========================
-# 🔹 Engineered / Internal Schema
+# 🔹 Response Schema
 # ==========================
-class Applicant(BaseModel):
-    age: int = Field(..., ge=18, le=75)
-    income: float = Field(..., gt=0)
-    savings: float = Field(..., ge=0)
-    loan_amount: float = Field(..., gt=0)
-    loan_term_months: int = Field(..., ge=1)
-    dependents: int = Field(..., ge=0)
-    credit_history: int
-    gender: int
-    married: int
-    education: int
-    self_employed: int
-    transactions_per_month: int = Field(..., ge=0)
-    previous_defaults: int = Field(..., ge=0)
-    repayment_ratio: float = Field(..., ge=0.0, le=1.0)
-
-    # Engineered features
-    debt_to_income: float = Field(..., ge=0)
-    installment_per_month: float = Field(..., ge=0)
-    installment_to_income: float = Field(..., ge=0)
-
-# ==========================
-# 🔹 Response Schemas
-# ==========================
-class PredictResponse(BaseModel):
+class CreditResponse(BaseModel):
     probability: float
     risk_category: str
-
-class BatchPredictResponse(BaseModel):
-    results: List[PredictResponse]
+    confidence: str
+    reason: str

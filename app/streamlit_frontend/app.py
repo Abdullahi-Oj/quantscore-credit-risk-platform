@@ -2,6 +2,7 @@
 
 import streamlit as st
 import requests
+import os
 
 # ==========================
 # 🔹 App Config
@@ -12,10 +13,8 @@ st.set_page_config(
     layout="centered"
 )
 
-# ==========================
-# 🔹 API Endpoint
-# ==========================
-API_URL = "http://127.0.0.1:8000/predict"
+API_URL = os.getenv("QUANTSCORE_API_URL", "http://127.0.0.1:8000/explain")
+API_KEY = os.getenv("QUANTSCORE_API_KEY")
 
 # ==========================
 # 🔹 App Title
@@ -27,8 +26,7 @@ st.write("Enter customer details to evaluate loan default risk.")
 # 🔹 Input Form
 # ==========================
 with st.form("credit_form"):
-
-    Age = st.number_input("Age", min_value=18, max_value=100, value=30)
+    Age = st.number_input("Age", min_value=18, max_value=75, value=30)
     MonthlyIncome = st.number_input("Monthly Income (₦)", min_value=0.0, value=250000.0)
     LoanAmount = st.number_input("Loan Amount (₦)", min_value=0.0, value=800000.0)
     LoanDuration = st.number_input("Loan Duration (Months)", min_value=1, value=12)
@@ -51,48 +49,39 @@ with st.form("credit_form"):
 # 🔹 Submit Logic
 # ==========================
 if submitted:
-    payload = {
-        "Age": Age,
-        "MonthlyIncome": MonthlyIncome,
-        "LoanAmount": LoanAmount,
-        "LoanDuration": LoanDuration,
-        "Dependents": Dependents,
-        "CreditHistory": CreditHistory,
-        "Gender": Gender,
-        "Married": Married,
-        "Education": Education,
-        "SelfEmployed": SelfEmployed,
-        "Savings": Savings,
-        "TransactionsPerMonth": TransactionsPerMonth,
-        "PreviousDefaults": PreviousDefaults,
-        "RepaymentRatio": RepaymentRatio
-    }
+    if not API_KEY:
+        st.error("API key not configured. Set QUANTSCORE_API_KEY environment variable.")
+    else:
+        payload = {
+            "Age": Age,
+            "MonthlyIncome": MonthlyIncome,
+            "LoanAmount": LoanAmount,
+            "LoanDuration": LoanDuration,
+            "Dependents": Dependents,
+            "CreditHistory": CreditHistory,
+            "Gender": Gender,
+            "Married": Married,
+            "Education": Education,
+            "SelfEmployed": SelfEmployed,
+            "Savings": Savings,
+            "TransactionsPerMonth": TransactionsPerMonth,
+            "PreviousDefaults": PreviousDefaults,
+            "RepaymentRatio": RepaymentRatio
+        }
 
-    with st.spinner("Scoring credit risk..."):
-        try:
-            response = requests.post(API_URL, json=payload)
+        headers = {"x-api-key": API_KEY}
 
-            if response.status_code == 200:
-                result = response.json()
-
-                st.success("Prediction Successful ✅")
-
-                st.metric(
-                    label="Default Probability",
-                    value=f"{result['probability']:.2%}"
-                )
-
-                risk = result["risk_category"]
-
-                if risk == "Low Risk":
-                    st.success(f"Risk Category: {risk}")
-                elif risk == "Medium Risk":
-                    st.warning(f"Risk Category: {risk}")
+        with st.spinner("Scoring credit risk..."):
+            try:
+                res = requests.post(API_URL, json=payload, headers=headers)
+                if res.status_code == 200:
+                    result = res.json()
+                    st.success("Assessment Completed ✅")
+                    st.metric("Default Probability", f"{result['probability']:.2%}")
+                    st.info(f"Decision: {result['risk_category']}")
+                    st.write(f"Confidence: {result['confidence']}")
+                    st.write(result["reason"])
                 else:
-                    st.error(f"Risk Category: {risk}")
-
-            else:
-                st.error(f"API Error: {response.text}")
-
-        except Exception as e:
-            st.error(f"Connection error: {e}")
+                    st.error(f"API Error: {res.text}")
+            except Exception as e:
+                st.error(f"Connection error: {e}")
