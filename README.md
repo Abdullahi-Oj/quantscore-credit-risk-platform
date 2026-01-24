@@ -40,3 +40,52 @@ Data Ingestion → Feature Engineering → Model Training & Calibration
         FastAPI Scoring Service
                ↓
         Portfolio Monitoring & Reporting
+
+ Live Deployment
+
+API Endpoint (Render):
+Coming soon / To be added
+
+The platform is deployed on Render for production-style testing and demonstration.
+
+ Tech Stack
+
+Languages: Python
+
+ML & Stats: Scikit-learn, XGBoost, Statsmodels
+
+Explainability: SHAP
+
+Backend: FastAPI
+
+Data: Pandas, NumPy
+
+Deployment: Render
+
+Version Control: Git & GitHub
+
+ Use Cases
+
+Digital lenders & fintechs
+
+MSME lending platforms
+
+BNPL providers
+
+Credit & risk analytics teams
+
+ Status
+
+This repository represents an actively evolving credit risk system used for:
+
+Portfolio simulation
+
+Risk strategy testing
+
+Production-style deployment demonstrations
+
+ Author
+
+Abdullahi O. Aliyu
+MSc Financial Engineering
+Certified Data Scientist – WorldQuant University
