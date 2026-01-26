@@ -1,11 +1,10 @@
-# app/schemas.py
-
 from pydantic import BaseModel, Field, validator, ConfigDict
-from typing import List, Optional
+
 
 # ==========================
 # 🔹 API Input Schema
 # ==========================
+
 class CreditData(BaseModel):
     Age: int = Field(..., ge=18, le=75)
     MonthlyIncome: float = Field(..., gt=0)
@@ -22,7 +21,13 @@ class CreditData(BaseModel):
     PreviousDefaults: int = 0
     RepaymentRatio: float = 0.0
 
-    @validator("CreditHistory", "Gender", "Married", "Education", "SelfEmployed")
+    @validator(
+        "CreditHistory",
+        "Gender",
+        "Married",
+        "Education",
+        "SelfEmployed",
+    )
     def binary_fields(cls, v):
         if v not in (0, 1):
             raise ValueError("Field must be 0 or 1")
@@ -32,8 +37,8 @@ class CreditData(BaseModel):
         json_schema_extra={
             "example": {
                 "Age": 30,
-                "MonthlyIncome": 250000,
-                "LoanAmount": 800000,
+                "MonthlyIncome": 250_000,
+                "LoanAmount": 800_000,
                 "LoanDuration": 12,
                 "Dependents": 0,
                 "CreditHistory": 1,
@@ -41,17 +46,19 @@ class CreditData(BaseModel):
                 "Married": 0,
                 "Education": 1,
                 "SelfEmployed": 0,
-                "Savings": 500000,
+                "Savings": 500_000,
                 "TransactionsPerMonth": 10,
                 "PreviousDefaults": 0,
-                "RepaymentRatio": 0.8
+                "RepaymentRatio": 0.8,
             }
         }
     )
 
+
 # ==========================
 # 🔹 Response Schema
 # ==========================
+
 class CreditResponse(BaseModel):
     probability: float
     risk_category: str
