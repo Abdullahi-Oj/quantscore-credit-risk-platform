@@ -1,9 +1,21 @@
+import os
 import requests
 import json
+from dotenv import load_dotenv  # for loading API key from .env
 
-# --- Config ---
+# ==========================
+# 🔹 Load API key from .env
+# ==========================
+load_dotenv()  # loads variables from .env in project root
+API_KEY = os.getenv("QUANTSCORE_API_KEY")
+
+if not API_KEY:
+    raise ValueError("API key not found! Please set QUANTSCORE_API_KEY in your .env file.")
+
+# ==========================
+# 🔹 Config
+# ==========================
 BASE_URL = "http://127.0.0.1:8000"
-API_KEY = "qs_2025_secure_key_123"  # your API key
 
 headers = {
     "accept": "application/json",
@@ -11,7 +23,9 @@ headers = {
     "Content-Type": "application/json"
 }
 
-# --- Sample single input ---
+# ==========================
+# 🔹 Sample inputs
+# ==========================
 single_input = {
     "Age": 30,
     "CreditHistory": 1,
@@ -29,10 +43,11 @@ single_input = {
     "TransactionsPerMonth": 10
 }
 
-# --- Batch input (list of records) ---
-batch_input = [single_input, single_input]  # example: two identical records
+batch_input = [single_input, single_input]  # example batch
 
-# --- Helper function to send POST requests ---
+# ==========================
+# 🔹 Helper function to send POST requests
+# ==========================
 def post_request(endpoint, data):
     url = f"{BASE_URL}/{endpoint}"
     response = requests.post(url, headers=headers, json=data)
@@ -42,11 +57,9 @@ def post_request(endpoint, data):
     else:
         print(f"\n❌ Error {response.status_code} from /{endpoint}: {response.text}")
 
-# --- Test /predict ---
+# ==========================
+# 🔹 Test endpoints
+# ==========================
 post_request("predict", single_input)
-
-# --- Test /explain ---
 post_request("explain", single_input)
-
-# --- Test /batch_predict ---
 post_request("batch_predict", batch_input)

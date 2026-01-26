@@ -1,11 +1,26 @@
+import os
 import requests
 import json
+from dotenv import load_dotenv  # for loading .env file
 
-# API endpoint
+# ==========================
+# 🔹 Load API key from .env
+# ==========================
+load_dotenv()  # looks for .env file in project root
+API_KEY = os.getenv("QUANTSCORE_API_KEY")
+
+if not API_KEY:
+    raise ValueError("API key not found! Please set QUANTSCORE_API_KEY in your .env file.")
+
+# ==========================
+# 🔹 API endpoint
+# ==========================
 BASE_URL = "http://127.0.0.1:8000"
 SINGLE_PREDICT = f"{BASE_URL}/predict"
 
-# Input data
+# ==========================
+# 🔹 Input data
+# ==========================
 single_input = {
     "Age": 30,
     "CreditHistory": 1,
@@ -23,13 +38,22 @@ single_input = {
     "TransactionsPerMonth": 10
 }
 
-# API Key header
-headers = {"x-api-key": "qs_2025_secure_key_123"}
+# ==========================
+# 🔹 API headers
+# ==========================
+headers = {
+    "x-api-key": API_KEY,
+    "Content-Type": "application/json"
+}
 
-# Send request
+# ==========================
+# 🔹 Send request
+# ==========================
 response = requests.post(SINGLE_PREDICT, json=single_input, headers=headers)
 
-# Print response
+# ==========================
+# 🔹 Print response
+# ==========================
 if response.status_code == 200:
     print("Prediction Response:")
     print(json.dumps(response.json(), indent=4))
