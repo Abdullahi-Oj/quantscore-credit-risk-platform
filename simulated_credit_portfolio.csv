@@ -1,0 +1,51 @@
+Age,CreditHistory,Dependents,Education,Gender,LoanAmount,LoanDuration,Married,MonthlyIncome,PreviousDefaults,RepaymentRatio,Savings,SelfEmployed,TransactionsPerMonth,probability,risk_category,confidence,reason
+42,0,4,0,0,1617859,12,1,1175437,0,0.73,606520,0,57,1.0,REJECT,High,"High default risk driven by income, repayment ratio, and credit history."
+60,0,4,0,0,486328,36,1,558413,0,0.81,926922,0,57,0.5463,REVIEW,Medium,Moderate risk detected. Manual review recommended.
+35,1,4,0,0,522725,6,0,243822,1,0.47,2495892,1,43,0.9259,REJECT,High,"High default risk driven by income, repayment ratio, and credit history."
+52,0,5,0,1,1014054,12,1,766948,1,0.91,56209,1,14,0.9929,REJECT,High,"High default risk driven by income, repayment ratio, and credit history."
+39,1,1,0,0,1546990,36,0,402392,0,0.64,504382,1,6,1.0,REJECT,High,"High default risk driven by income, repayment ratio, and credit history."
+54,0,3,0,1,777205,24,0,145599,3,0.31,304001,0,14,0.9929,REJECT,High,"High default risk driven by income, repayment ratio, and credit history."
+61,1,3,1,0,1593603,36,0,151495,0,0.7,1973278,0,13,0.9929,REJECT,High,"High default risk driven by income, repayment ratio, and credit history."
+36,1,3,1,1,1850480,24,1,493066,3,0.82,462772,0,1,0.9929,REJECT,High,"High default risk driven by income, repayment ratio, and credit history."
+21,0,4,1,1,439282,6,1,447787,1,0.72,2184096,0,7,0.9929,REJECT,High,"High default risk driven by income, repayment ratio, and credit history."
+60,1,5,0,1,311027,12,1,878985,0,0.74,1551000,0,55,0.0808,APPROVE,High,Low predicted default risk based on income stability and repayment behavior.
+47,1,5,1,1,1859899,6,1,813871,3,0.25,518573,1,39,0.9929,REJECT,High,"High default risk driven by income, repayment ratio, and credit history."
+57,0,0,1,0,127304,12,1,820617,1,0.86,572000,1,32,0.058,APPROVE,High,Low predicted default risk based on income stability and repayment behavior.
+38,0,3,0,1,597655,24,0,1127720,1,0.71,94862,1,33,0.5463,REVIEW,Medium,Moderate risk detected. Manual review recommended.
+27,1,3,0,0,272408,12,0,928859,0,0.95,1048452,1,8,0.058,APPROVE,High,Low predicted default risk based on income stability and repayment behavior.
+25,1,4,1,0,451692,24,1,458389,1,0.21,689847,1,13,0.9929,REJECT,High,"High default risk driven by income, repayment ratio, and credit history."
+42,1,0,1,0,1633217,6,0,289536,1,0.33,2136681,1,18,0.9929,REJECT,High,"High default risk driven by income, repayment ratio, and credit history."
+47,1,2,0,1,948711,36,0,81193,1,0.75,1707203,1,44,0.9259,REJECT,High,"High default risk driven by income, repayment ratio, and credit history."
+33,0,3,1,0,747853,12,0,220788,1,0.62,1507266,0,32,0.9929,REJECT,High,"High default risk driven by income, repayment ratio, and credit history."
+54,1,2,0,1,1487677,6,1,1120149,0,0.25,2094035,0,34,0.9929,REJECT,High,"High default risk driven by income, repayment ratio, and credit history."
+65,0,2,1,1,1667210,6,1,99510,2,0.57,1889590,0,30,1.0,REJECT,High,"High default risk driven by income, repayment ratio, and credit history."
+28,1,1,0,0,1449621,24,1,1168608,2,0.21,841033,1,39,0.9929,REJECT,High,"High default risk driven by income, repayment ratio, and credit history."
+44,1,4,1,0,1113062,36,1,348250,0,0.62,223395,1,55,0.9929,REJECT,High,"High default risk driven by income, repayment ratio, and credit history."
+42,0,0,1,0,52363,12,0,896651,2,0.92,112490,1,23,0.0808,APPROVE,High,Low predicted default risk based on income stability and repayment behavior.
+22,1,3,1,1,553195,24,1,856240,2,0.76,950849,1,14,0.5463,REVIEW,Medium,Moderate risk detected. Manual review recommended.
+51,0,3,0,1,1588466,24,0,402846,0,0.62,2409658,0,30,1.0,REJECT,High,"High default risk driven by income, repayment ratio, and credit history."
+35,1,3,1,1,1754453,12,0,804466,0,0.56,1500262,1,52,0.9929,REJECT,High,"High default risk driven by income, repayment ratio, and credit history."
+57,0,3,0,0,1651944,24,1,107840,3,0.86,286461,0,46,0.9929,REJECT,High,"High default risk driven by income, repayment ratio, and credit history."
+29,1,0,1,0,1943980,6,1,865186,1,0.47,1069762,0,54,0.9929,REJECT,High,"High default risk driven by income, repayment ratio, and credit history."
+42,1,2,1,1,185195,12,0,186652,2,0.65,61566,1,2,1.0,REJECT,High,"High default risk driven by income, repayment ratio, and credit history."
+58,0,3,0,1,606537,24,0,517695,2,0.68,1268196,0,51,0.9929,REJECT,High,"High default risk driven by income, repayment ratio, and credit history."
+35,0,0,0,0,887341,24,1,1158712,3,0.78,2108144,0,8,0.5357,REVIEW,Medium,Moderate risk detected. Manual review recommended.
+21,1,2,0,0,1144865,6,0,937005,0,0.41,2328494,1,55,0.9929,REJECT,High,"High default risk driven by income, repayment ratio, and credit history."
+24,1,1,0,1,742847,6,1,1196367,0,0.67,414827,1,33,0.5463,REVIEW,Medium,Moderate risk detected. Manual review recommended.
+27,0,3,0,1,212103,6,1,1137600,0,0.3,1234738,1,8,0.0175,APPROVE,High,Low predicted default risk based on income stability and repayment behavior.
+24,0,1,1,1,1438628,12,1,668997,0,0.3,1094956,1,3,0.9929,REJECT,High,"High default risk driven by income, repayment ratio, and credit history."
+42,1,2,0,0,1236256,36,1,555540,3,0.89,1875921,0,31,1.0,REJECT,High,"High default risk driven by income, repayment ratio, and credit history."
+21,0,5,1,0,1611605,12,1,928420,3,0.72,159284,0,55,0.9929,REJECT,High,"High default risk driven by income, repayment ratio, and credit history."
+63,0,4,0,1,1789535,12,0,1003783,3,0.62,655899,0,37,1.0,REJECT,High,"High default risk driven by income, repayment ratio, and credit history."
+65,0,1,1,0,68723,36,1,649469,1,0.6,1101228,0,18,0.058,APPROVE,High,Low predicted default risk based on income stability and repayment behavior.
+39,1,4,1,0,1212509,24,1,584796,3,0.39,987150,1,19,0.9929,REJECT,High,"High default risk driven by income, repayment ratio, and credit history."
+57,0,0,1,1,70008,24,1,179661,3,0.24,2455963,0,44,0.2489,APPROVE,High,Low predicted default risk based on income stability and repayment behavior.
+40,1,3,1,1,254130,12,1,1142440,2,0.25,1123680,1,44,0.04,APPROVE,High,Low predicted default risk based on income stability and repayment behavior.
+40,1,1,0,0,1798450,12,1,626619,2,0.79,1959813,1,11,1.0,REJECT,High,"High default risk driven by income, repayment ratio, and credit history."
+48,0,5,1,0,267172,24,1,348617,2,0.92,1073104,1,6,0.5357,REVIEW,Medium,Moderate risk detected. Manual review recommended.
+43,1,2,0,1,1837459,36,1,737091,0,0.74,912074,1,57,0.9929,REJECT,High,"High default risk driven by income, repayment ratio, and credit history."
+27,1,1,1,1,773559,24,1,1025919,2,0.69,1429492,1,34,0.5357,REVIEW,Medium,Moderate risk detected. Manual review recommended.
+29,1,0,0,1,252108,36,1,1168887,1,0.76,810654,1,30,0.04,APPROVE,High,Low predicted default risk based on income stability and repayment behavior.
+23,1,0,0,1,748553,24,1,1155602,0,0.44,2442685,0,44,0.2489,APPROVE,High,Low predicted default risk based on income stability and repayment behavior.
+51,0,5,0,1,136665,36,0,279322,2,0.85,460414,0,19,0.5463,REVIEW,Medium,Moderate risk detected. Manual review recommended.
+62,0,3,1,1,1432603,12,1,825034,2,0.46,514171,1,30,1.0,REJECT,High,"High default risk driven by income, repayment ratio, and credit history."

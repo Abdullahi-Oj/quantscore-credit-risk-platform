@@ -3,7 +3,7 @@ import time
 import joblib
 import shap
 
-from app.config import MODEL_PATH
+from app.core.config import settings
 
 
 class ModelBundle:
@@ -22,16 +22,15 @@ class ModelBundle:
         """
         Load serialized model artifacts from disk.
         """
-        artifacts = joblib.load(MODEL_PATH)
+        artifacts = joblib.load(settings.MODEL_PATH)
 
         self.model = artifacts["model"]
         self.calibrator = artifacts["calibrator"]
         self.scaler = artifacts["scaler"]
         self.features = artifacts["features"]
+        self.sample_data = artifacts.get("sample_data", None)
 
-        self.loaded_at = time.strftime(
-            "%Y-%m-%d %H:%M:%S"
-        )
+        self.loaded_at = time.strftime("%Y-%m-%d %H:%M:%S")
 
     def _init_explainer(self) -> None:
         """
@@ -39,15 +38,13 @@ class ModelBundle:
 
         TreeExplainer is fast and stable for tree-based models.
         """
-        self.explainer = shap.TreeExplainer(
-            self.model
-        )
+        self.explainer = shap.TreeExplainer(self.model)
 
     def version(self) -> dict:
         """
         Return model version metadata.
         """
         return {
-            "model_file": MODEL_PATH,
+            "model_file": settings.MODEL_PATH,
             "loaded_at": self.loaded_at,
         }
