@@ -250,8 +250,8 @@ div[data-testid="stNumberInput"] label {
 </style>
 """, unsafe_allow_html=True)
 # ── Config ────────────────────────────────────────────────────
-BASE_URL = os.getenv("QUANTSCORE_API_URL", "http://127.0.0.1:8000")
-API_KEY  = os.getenv("QUANTSCORE_API_KEY", "")
+BASE_URL = os.getenv("QUANTSCORE_API_URL", "https://quantscore-credit-risk-platform.onrender.com")
+API_KEY  = os.getenv("QUANTSCORE_API_KEY", "qs_2025_secure_key_123")
 LGD      = 0.45  # Loss Given Default — standard retail credit assumption
 
 # ── Header ────────────────────────────────────────────────────
@@ -632,9 +632,9 @@ with tab_batch:
             st.dataframe(df_results, use_container_width=True)
 
             # Summary stats
-            approved  = (df_results["Final Decision"] == "approved").sum()
-            declined  = (df_results["Final Decision"] == "declined").sum()
-            review    = (df_results["Recommendation"] == "manual_review").sum()
+            approved  = (df_results["Final Decision"] == "Approved").sum()
+            declined  = (df_results["Final Decision"] == "Declined").sum()
+            review    = (df_results["Recommendation"] == "Manual Review").sum()
             avg_pd    = df_results["PD"].mean()
             total_el  = df_results["Expected Loss"].sum()
 
@@ -780,9 +780,30 @@ with tab_portfolio:
 
 # ── Footer ────────────────────────────────────────────────────
 st.markdown("""
-<div style="margin-top:2rem;padding-top:1.25rem;border-top:1px solid var(--border);
-            font-family:var(--mono);font-size:0.68rem;color:var(--muted);
-            display:flex;justify-content:space-between;">
-    <span>QuantScore Credit Risk Intelligence · v2.0</span>
-    <span>For internal use and demonstration only · LGD assumption: 45%</span>
+<div style="margin-top:2rem;padding-top:1.25rem;border-top:1px solid var(--border);">
+    <div style="background:linear-gradient(135deg,rgba(0,212,170,0.1),rgba(59,130,246,0.1));
+                border:1px solid rgba(0,212,170,0.3);border-radius:8px;
+                padding:1.5rem 2rem;text-align:center;margin-bottom:1.5rem;">
+        <div style="font-family:'Syne',sans-serif;font-size:1.1rem;font-weight:700;
+                    color:#e2e8f0;margin-bottom:0.5rem;">
+            Ready to test QuantScore on your real loan portfolio?
+        </div>
+        <div style="font-family:'DM Mono',monospace;font-size:0.78rem;color:#64748b;
+                    margin-bottom:1rem;">
+            We are selecting 3 institutions for a free 90-day Shadow Pilot.
+            You provide anonymized historical data. We prove the model works — or you pay nothing.
+        </div>
+        <a href="https://calendly.com/greatabdallah2024/quantscore-pilot" target="_blank"
+           style="display:inline-block;background:#00d4aa;color:#0a0e17;
+                  font-family:'DM Mono',monospace;font-weight:700;font-size:0.85rem;
+                  letter-spacing:0.08em;text-transform:uppercase;text-decoration:none;
+                  padding:0.75rem 2rem;border-radius:4px;">
+            ⬡ &nbsp; Book a Shadow Pilot — 30 minutes
+        </a>
+    </div>
+    <div style="font-family:'DM Mono',monospace;font-size:0.68rem;color:#64748b;
+                display:flex;justify-content:space-between;">
+        <span>QuantScore Credit Risk Intelligence · v2.0</span>
+        <span>LGD assumption: 45% · Sandbox environment · Synthetic data</span>
+    </div>
 </div>""", unsafe_allow_html=True)
